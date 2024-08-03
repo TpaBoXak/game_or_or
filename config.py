@@ -9,8 +9,10 @@ class RunConfig(BaseModel):
 class ApiPrefix (BaseModel):
     choice_prefix: str = "/choice"
 
+
 class Settings(BaseSettings):
     run: RunConfig = RunConfig
     api: ApiPrefix = ApiPrefix()
+
 
 settings: Settings = Settings
