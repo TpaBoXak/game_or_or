@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from app.models import DataBaseHelper
 from config import settings
 from app.api import router
+from .models import Base
 
 db_helper = DataBaseHelper(
         url=str(settings.db.url),

@@ -3,6 +3,7 @@ from sqlalchemy.ext.asyncio import async_sessionmaker
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from .base import Base
+from .user import User
 
 class DataBaseHelper:
     def __init__(
