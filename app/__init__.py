@@ -1,5 +1,9 @@
-from models import DataBaseHelper
+from fastapi import FastAPI
+from contextlib import asynccontextmanager
+
+from app.models import DataBaseHelper
 from config import settings
+from app.api import router
 
 db_helper = DataBaseHelper(
         url=str(settings.db.url),
@@ -8,3 +12,15 @@ db_helper = DataBaseHelper(
         pool_size=settings.db.pool_size,
         max_overflow=settings.db.max_overflow,
 )
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # startup
+    yield
+    # shutdown
+    print("dispose engine")
+    await db_helper.dispose()
+
+main_app = FastAPI(lifespan=lifespan)
+main_app.include_router(router=router, prefix=settings.api.choice_prefix)
+
