@@ -5,6 +5,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from .base import Base
 from .user import User
 from .role import Role
+from .joke import Joke
+from .user_joke import UserJoke
 
 class DataBaseHelper:
     def __init__(
