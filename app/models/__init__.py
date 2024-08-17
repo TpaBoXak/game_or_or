@@ -4,6 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from .base import Base
 from .user import User
+from .role import Role
 
 class DataBaseHelper:
     def __init__(
