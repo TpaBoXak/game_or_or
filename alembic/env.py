@@ -28,8 +28,10 @@ target_metadata = Base.metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+
 from app import settings
-config.set_main_option("sqlachemy.url", str(settings.db.url))
+config.set_main_option("sqlalchemy.url", str(settings.db.url))
+print(str(settings.db.url))
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
@@ -73,6 +75,7 @@ async def run_async_migrations() -> None:
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )
+    print("asdasd",connectable.url)
 
     async with connectable.connect() as connection:
         await connection.run_sync(do_run_migrations)

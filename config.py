@@ -12,7 +12,7 @@ class ApiPrefix (BaseModel):
     choice_prefix: str = "/choice"
 
 
-class DatabaseConfig(BaseModel):
+class DatabaseConfig(BaseModel): 
     url: PostgresDsn
     echo: bool = False
     echo_pool: bool = False
@@ -41,4 +41,4 @@ class Settings(BaseSettings):
 
 
 settings: Settings = Settings()
-print(settings.db.echo)
+print(settings.db.echo, settings.db.url)

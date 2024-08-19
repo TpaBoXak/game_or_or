@@ -17,6 +17,7 @@ db_helper = DataBaseHelper(
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # startup
+    print(str(settings.db.url))
     yield
     # shutdown
     print("dispose engine")
