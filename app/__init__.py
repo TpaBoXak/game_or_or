@@ -3,7 +3,6 @@ from contextlib import asynccontextmanager
 
 from app.models import DataBaseHelper
 from config import settings
-from app.api import router
 from .models import Base
 
 db_helper = DataBaseHelper(
@@ -24,5 +23,14 @@ async def lifespan(app: FastAPI):
     await db_helper.dispose()
 
 main_app = FastAPI(lifespan=lifespan)
-main_app.include_router(router=router, prefix=settings.api.choice_prefix)
+
+from app.api import v1_admin_router 
+main_app.include_router(router=v1_admin_router)
+
+from app.api import v1_enter_router
+main_app.include_router(router=v1_enter_router)
+
+from app.api import v1_choice_router
+main_app.include_router(router=v1_choice_router)
+
 

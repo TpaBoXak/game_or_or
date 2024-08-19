@@ -10,7 +10,8 @@ class RunConfig(BaseModel):
 
 class ApiPrefix (BaseModel):
     choice_prefix: str = "/choice"
-
+    enter_prefix: str = "/enter"
+    admin_prefix: str = "/admin"
 
 class DatabaseConfig(BaseModel): 
     url: PostgresDsn
